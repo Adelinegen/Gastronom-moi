@@ -1,0 +1,372 @@
+<!Doctype html>
+<html>
+<head>
+	<title>Gastronom'moi</title>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, heigth=device-heigth, initial-scale=1" >
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Sofia' rel='stylesheet' type='text/css'>
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!--AUTOCOMPLETE-->
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+ 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+	<!--theme-->
+	<link rel="stylesheet" href="css/theme-gastronome.css" />
+  	<link rel="stylesheet" href="css/theme-gastronome.min.css" />
+  	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+
+	<script type="text/javascript" src="js/oXHR.js"></script>
+	<script type="text/javascript" src="js/rating.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKxUk9SzYhxtGneqZJXKzcvyANlIR5H-0"></script>
+
+
+<body>
+	
+	<div data-role="page" id="splash"> 
+		<div class="class_splash">
+            		Accueil Gastronome moi
+        	</div>
+	</div>
+	<!--ETOILES-->
+	<div data-role="page" id="stars">
+		<div data-role="header" data-position="fixed">
+			    <div class="ui-grid-c center">
+				    <div class="ui-block-a"><a href="#stars" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-b"><a  href="#stars" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-c"><h1>Gastronom'moi</h1></div>
+				    <div class="ui-block-d"><a href="#connection"  class="ui-shadow ui-btn ui-corner-all ui-icon-user ui-btn-icon-notext ui-btn-inline co">Button</a></div>
+				    <div class="ui-block-d"><a class="ui-shadow ui-btn ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline deco  deconnection">Button</a></div>
+				</div>		
+		</div>
+
+		<div role="main" class="ui-content">
+			<button id="1" class="etoile s1 ui-btn ui-corner-all">1 étoile</button>
+			<button id="2" class="etoile s2 ui-btn ui-corner-all">2 étoiles</button>
+			<button id="3" class="etoile s3 ui-btn ui-corner-all">3 étoiles</button>
+			<button id="4" class="etoile s4 ui-btn ui-corner-all">Tous</button>
+		</div>
+	</div>
+
+	<!--CHOIX-->
+	<div data-role="page" id="choice">
+		<div data-role="header" data-position="fixed">
+			    <div class="ui-grid-c center">
+			    	<div class="ui-block-a"><a  href="#stars" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-b"><a  href="#stars" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-c"><h1>Gastronom'moi</h1></div>
+				    <div class="ui-block-d"><a href="#connection"  class="ui-shadow ui-btn ui-corner-all ui-icon-user ui-btn-icon-notext ui-btn-inline co">Button</a></div>
+				    <div class="ui-block-d"><a class="ui-shadow ui-btn ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline deco  deconnection">Button</a></div>
+				</div>		
+		</div>
+
+		<div role="main" class="ui-content">
+			<h2>Manger oui ! Mais où ?</h2>
+			<div class="ui-widget">
+				<label for="search-5">Indiquer une ville ou un code postal</label>
+	    		<ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Rechercher" data-filter-theme="a"></ul>
+			</div>
+					
+			<label for="text-basic">Rechercher autour de moi</label>
+			<input name="text-basic" id="text-basic"placeholder="ex: 50 km"  value="" type="text">
+			<button id="km" class="ui-btn ui-btn-inline">Ok</button>
+		</div>
+
+	</div>
+
+	<!--LISTE RESTAU-->
+	<div data-role="page" id="list">
+		<div data-role="header" data-position="fixed">
+			    <div class="ui-grid-c center">
+				    <div class="ui-block-a"><a  href="#stars" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-b"><a  href="#choice" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-c"><h1>Gastronom'moi</h1></div>
+				    <div class="ui-block-d"><a href="#connection"  class="ui-shadow ui-btn ui-corner-all ui-icon-user ui-btn-icon-notext ui-btn-inline co">Button</a></div>
+				    <div class="ui-block-d"><a  class="ui-shadow ui-btn ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline deco  deconnection">Button</a></div>
+				</div>		
+		</div>
+
+		<div role="main" class="ui-content">
+			<ul data-role="listview" data-inset="false" id="list-recherche"></ul>
+		</div>
+	</div>
+	
+	<!--PAGE RESTAU-->
+	<div data-role="page" id="page">
+		<div data-role="header" data-position="fixed">
+			    <div class="ui-grid-c center">
+				    <div class="ui-block-a"><a href="#stars" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-b"><a href="#list" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-c"><h1>Gastronom'moi</h1></div>
+				    <div class="ui-block-d"><a href="#connection"  class="ui-shadow ui-btn ui-corner-all ui-icon-user ui-btn-icon-notext ui-btn-inline co">Button</a></div>
+				    <div class="ui-block-d"><a  class="ui-shadow ui-btn ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline deco  deconnection">Button</a></div>
+				</div>		
+		</div>
+
+		<div role="main" class="ui-content">
+			<img src="" class="img_resto"/>
+			<h2 class="title_resto">Le loup Galant</h2>
+			<img src="images/enluminure.png" width="100%" >
+			<div class="nom_chef">Chef : <span class="chef_resto">M. Ossorg</span></div>
+			<div id="etoiles"></div>
+			<p class="content_fiche">
+				Cuisine <span class="cuisine_resto">française</span>
+				<a class="ui-shadow ui-btn ui-corner-all ui-icon-phone ui-btn-icon-notext ui-btn-inline tel_resto">Button</a>
+				<a id="mini_itineraire" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-notext ui-btn-inline">Button</a><br/><br/>
+				De <span class="prix_resto">239 € à 560 €</span><br/><br/>
+				Note des clients : <span class="texte_color"><span class="moyenne">5</span>/5</span> sur <span class="total">34</span> avis
+			</p>
+		</div>
+		
+		<div data-role="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#info" data-icon="info" >Infos</a></li>
+					<li><a href="#contact" data-icon="location">Coordonnées</a></li>
+					<li><a href="#opinion" data-icon="comment">Avis</a></li>
+				</ul>
+			</div>
+        </div>
+		
+	</div>
+	
+	<!--INFO RESTAU-->
+	<div data-role="page" id="info">
+		<div data-role="header" data-position="fixed">
+			    <div class="ui-grid-c center">
+				    <div class="ui-block-a"><a href="#stars" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-b"><a href="#page" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-c"><h1>Gastronom'moi</h1></div>
+				    <div class="ui-block-d"><a href="#connection"  class="ui-shadow ui-btn ui-corner-all ui-icon-user ui-btn-icon-notext ui-btn-inline co">Button</a></div>
+				    <div class="ui-block-d"><a  class="ui-shadow ui-btn ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline deco  deconnection">Button</a></div>
+				</div>		
+		</div>
+
+		<div role="main" class="ui-content">
+			<img src="" class="img_resto"/>
+			<h2 class="title_resto">Le loup Galant</h2>
+			<img src="images/enluminure.png" width="100%">
+			<p>
+				<span class="texte_color specialite">Spécialité à écrire ICI !</span><br/><br/>
+				<span class="description">Description du restaurant : Lorem ipsum dolor sit amet, consectetur adipiscing 
+				elit. In quis nisl at magna consequat commodo non a nulla. In tempus nec ligula sit amet 
+				aliquet. Donec eget elit tempus, aliquet sapien et, sagittis dolor. Nullam quis lobortis 
+				purus. Nulla tincidunt egestas sodales. Nam ultrices finibus magna, a pretium dui convallis ut.</span>
+			</p>
+		</div>
+		
+		<div data-role="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#info" data-icon="info" class="ui-btn-active">Infos</a></li>
+					<li><a href="#contact" data-icon="location">Coordonnées</a></li>
+					<li><a href="#opinion" data-icon="comment">Avis</a></li>
+				</ul>
+			</div>
+        </div>
+		
+	</div>
+	
+	<!--COORDONNEES RESTAU-->		
+	<div data-role="page" id="contact">
+		<div data-role="header" data-position="fixed">
+			    <div class="ui-grid-c center">
+				    <div class="ui-block-a"><a href="#stars" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-b"><a href="#page" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-c"><h1>Gastronom'moi</h1></div>
+				    <div class="ui-block-d"><a href="#connection"  class="ui-shadow ui-btn ui-corner-all ui-icon-user ui-btn-icon-notext ui-btn-inline co">Button</a></div>
+				    <div class="ui-block-d"><a  class="ui-shadow ui-btn ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline deco  deconnection">Button</a></div>
+				</div>		
+		</div>
+
+		<div role="main" class="ui-content">
+		
+			<div id="map-canvas"></div>
+			<button id="itineraire" onclick="map_iti();" class="ui-btn bouton_iti">Trouver l'itinéraire le plus rapide</button>
+			<p>		
+				Tél : <span class="tel_resto">007</span><br/>
+				E-mail : <span class="email_resto">contact@lemeilleurresto.fr</span><br/>
+				Site internet : <span class="site_resto">lemeilleurresto.fr</span><br/><br/>
+				Adresse : <span class="adresse">3 rue Jean Eymar 05000 GAP</span><br/>
+			</p>
+		</div>
+		
+		<div data-role="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#info" data-icon="info" >Infos</a></li>
+					<li><a href="#contact" data-icon="location" class="ui-btn-active">Coordonnées</a></li>
+					<li><a href="#opinion" data-icon="comment">Avis</a></li>
+				</ul>
+			</div>
+        </div>
+		
+	</div>
+	
+	<!--MAP PLEIN ECRAN-->
+	<div data-role="page" id="super_map">
+		<div data-role="header" data-position="fixed">
+			    <div class="ui-grid-c center">
+				    <div class="ui-block-a"><a href="#stars" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-b"><a href="#contact" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-c"><h1>Gastronom'moi</h1></div>
+				    <div class="ui-block-d"><a href="#connection"  class="ui-shadow ui-btn ui-corner-all ui-icon-user ui-btn-icon-notext ui-btn-inline co">Button</a></div>
+				    <div class="ui-block-d"><a  class="ui-shadow ui-btn ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline deco  deconnection">Button</a></div>
+				</div>		
+		</div>
+
+		<div role="main" id="content_map" class="ui-content"></div>
+	</div>
+	
+	<!--AVIS RESTAU-->		
+	<div data-role="page" id="opinion">
+		<div data-role="header" data-position="fixed">
+			    <div class="ui-grid-c center">
+				    <div class="ui-block-a"><a href="#stars" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-b"><a href="#page" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline">Button</a></div>
+				    <div class="ui-block-c"><h1>Gastronom'moi</h1></div>
+				    <div class="ui-block-d"><a href="#connection"  class="ui-shadow ui-btn ui-corner-all ui-icon-user ui-btn-icon-notext ui-btn-inline co">Button</a></div>
+				    <div class="ui-block-d"><a  class="ui-shadow ui-btn ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline deco  deconnection">Button</a></div>
+				</div>		
+		</div>
+
+		<div role="main" class="ui-content">
+			<img src="" class="mini_img_resto"/>
+			<div class="avis">
+				<h2>Avis des clients</h2>
+				<h3><span class="texte_color"><span class="moyenne">5</span>/5 sur <span class="total">34</span> avis</span></h3>
+			</div>
+			<div class="papa_avis">
+				<div class="barre">
+						<div class="entete_avis"><h4>Avis de <span class="identite_client">Login</span><h4><h4 class="date">le <span class="date_avis">12/12/2014</span></h4><br/></div>
+						<div class="note1"><h5>Note table : </h5><img src="images/note_avis.png" class="avis1 note_table"/> <h5>Note cadre : </h5><img src="images/note_avis.png" class="avis1 note_cadre"/></div>
+						<div><h5>Note service : </h5><img src="images/note_avis.png" class="avis1 note_service"/> <h5>Note qualité/prix : </h5><img src="images/note_avis.png" class="avis2 note_qualprix"/></div>
+						<p class="comment_client">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut imperdiet lacinia leo ut congue. Pellentesque ac quam vel justo lobortis consequat. Mauris dui ipsum, aliquam ac convallis in, aliquam sed sapien.</p>
+				</div>
+			</div>
+			<div class="fond">
+				<a  id="donnerAvis" class="ui-shadow ui-btn ui-corner-all ui-btn-inline">Donner son avis</a>
+			</div>
+					
+		</div>
+		
+		<div data-role="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#info" data-icon="info" >Infos</a></li>
+					<li><a href="#contact" data-icon="location">Coordonnées</a></li>
+					<li><a href="#opinion" data-icon="comment" class="ui-btn-active">Avis</a></li>
+				</ul>
+			</div>
+        </div>
+		
+	</div>
+	
+	<!--CONNEXION-->
+	<div data-role="page" id="connection">
+		<div data-role="header" data-position="fixed">
+			    <div class="ui-grid-c center">
+			    <div class="ui-block-a"><a  href="#stars" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>
+			    <div class="ui-block-b"><a  href="#opinion" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline">Button</a></div>
+			    <div class="ui-block-c"><h1>Gastronom'moi</h1></div>
+			    <div class="ui-block-d"><a href="#connection"  class="ui-shadow ui-btn ui-corner-all ui-icon-user ui-btn-icon-notext ui-btn-inline co">Button</a></div>
+			    <div class="ui-block-d"><a class="ui-shadow ui-btn ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline deco  deconnection">Button</a></div>
+			</div>		
+		</div>
+
+		<div role="main" class="ui-content">
+			<h2>Connectez-vous pour partager.</h2>
+			<span id="erreur" class="erreur">Votre login et/ou votre mot de passe sont/est incorrect(s).</span>
+			<label for="text-basic">Entrez votre login :</label>
+    			<input name="login" id="login" value="" placeholder="Login" type="text">
+
+			<label for="text-basic">Entrez votre mot de passe :</label>
+			<input name="mdp" id="mdp" placeholder="Mot de passe"  value="" type="password">
+			<button class="ui-btn ui-btn-inline connection">Valider</button>
+		</div>
+
+		<div data-role="footer">
+			   <a  href="#ncompte" id="newCompte" class="ui-shadow ui-btn ui-corner-all ui-btn-inline">Créer un nouveau compte</a>
+		</div>
+
+	</div>
+	
+	<!--NOUVEAU COMPTE-->
+	<div data-role="page" id="ncompte">
+		<div data-role="header" data-position="fixed">
+			    <div class="ui-grid-c center">
+			    <div class="ui-block-a"><a  href="#stars" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>
+			    <div class="ui-block-b"><a  href="#opinion" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline">Button</a></div>
+			    <div class="ui-block-c"><h1>Gastronom'moi</h1></div>
+			    <div class="ui-block-d"><a href="#connection"  class="ui-shadow ui-btn ui-corner-all ui-icon-user ui-btn-icon-notext ui-btn-inline co">Button</a></div>
+			    <div class="ui-block-d"><a class="ui-shadow ui-btn ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline deco  deconnection">Button</a></div>
+			</div>		
+		</div>
+
+		<div role="main" class="ui-content">
+		<form method="post" action="ajoutcompte.php" id="form2" name="form2">
+			<h2>Inscrivez-vous.</h2>
+			<span id="erreur1" class="erreur3">Ce login existe dejà.</span>
+			<label for="text-basic">Entrez votre email :</label>
+    			<input name="nemail" id="nemail" value="" placeholder="Email" type="email">
+		
+			<label for="text-basic">Entrez un login :</label>
+    			<input name="nlogin" id="nlogin" value="" placeholder="Login" type="text">
+
+			<label for="text-basic">Entrez un mot de passe :</label>
+			<input name="nmdp" id="nmdp" placeholder="Mot de passe"  value="" type="password">
+			<button type="submit" id="inscrire" class="ui-btn ui-btn-inline commenter">S'inscrire</button>
+		</form>
+		</div>
+
+	</div>
+	
+	
+	<!--DONNER AVIS-->
+	<div data-role="page" id="addAvis">
+		<div data-role="header" data-position="fixed">
+			    <div class="ui-grid-c center">
+			    <div class="ui-block-a"><a  href="#stars" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>
+			    <div class="ui-block-b"><a  href="#opinion" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline">Button</a></div>
+			    <div class="ui-block-c"><h1>Gastronom'moi</h1></div>
+			    <div class="ui-block-d"><a href="#connection"  class="ui-shadow ui-btn ui-corner-all ui-icon-user ui-btn-icon-notext ui-btn-inline co">Button</a></div>
+			    <div class="ui-block-d"><a  class="ui-shadow ui-btn ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline deco  deconnection">Button</a></div>
+			</div>		
+		</div>
+
+		<div role="main" class="ui-content">
+			<form method="post" action="ajoutavis.php" id="form1" name="form1">
+			<h2>Donner votre avis.</h2>
+			
+			<label class="label_note" for="text-basic">Note table :</label>
+    			<input name="noteT" id="noteT" value="0" type="hidden"/>
+			<div id="starsT" class="starrr"></div>
+
+			<label class="label_note" for="text-basic">Note service :</label>
+    			<input name="noteS" id="noteS" value="0" type="hidden">
+			<div id="starsS" class="starrr"></div>
+			
+			<label class="label_note" for="text-basic">Note cadre :</label>
+    			<input name="noteC" id="noteC" value="0" type="hidden">
+			<div id="starsC" class="starrr"></div>
+			
+			<label class="label_note" for="text-basic">Note rapport qualité/prix :</label>
+    			<input name="noteQ" id="noteQ" value="0"type="hidden">
+			<div id="starsQ" class="starrr"></div>
+			
+			<label class="label_note" for="text-basic">Commentaire :</label>
+			<textarea id="comm"></textarea>
+			<button type="submit" id="commenter" class="ui-btn ui-btn-inline commenter">Commenter</button>
+			</form>
+		</div>
+
+	</div>
+	
+</body>
+
+</html>
