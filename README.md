@@ -8,8 +8,8 @@ Elle a été développée grâce à :
 
 Voici quelques screens de l'application :
 
-![Application restaurants etoiles jQuery Mobile](http://puu.sh/kE4rS/6156018464.jpg)
-![Application restaurants etoiles jQuery Mobile](http://puu.sh/kE4uG/cbd75cf5ae.png)
-![Application restaurants etoiles jQuery Mobile](http://puu.sh/kE4xb/88854fb327.jpg)
-![Application restaurants etoiles jQuery Mobile](http://puu.sh/kE4zz/2f319798e1.jpg)
-![Application restaurants etoiles jQuery Mobile](http://puu.sh/kE4C7/cad2a2edd9.jpg)
+![](http://puu.sh/kE4rS/6156018464.jpg)
+![](http://puu.sh/kE4uG/cbd75cf5ae.png)
+![](http://puu.sh/kE4xb/88854fb327.jpg)
+![](http://puu.sh/kE4zz/2f319798e1.jpg)
+![](http://puu.sh/kE4C7/cad2a2edd9.jpg)
